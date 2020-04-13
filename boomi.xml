@@ -1,0 +1,753 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Component xmlns:ns2="http://www.boomi.com/connector/annotation" xmlns:ns3="http://exacttarget.com/wsdl/partnerAPI" xmlns:ns4="urn:fault.partner.exacttarget.com" xmlns:ns5="http://schemas.boomi.com/sap/edi_dc40" xmlns:ns6="http://schemas.microsoft.com/2003/10/Serialization/" deleted="false">
+	<Id>f6a28619-62f7-405c-8631-e73e1049fc38</Id>
+	<Type>process</Type>
+	<Name>HNK_HSP_PR_15300_SAP_SF_SalesOrder_CreationModification</Name>
+	<Version>69</Version>
+	<FolderId name="Heineken Global/#Region EMEA/BP_ORDER_TO_CASH/Spain_Salesforce">3045828</FolderId>
+	<AccountId>heinekeninternational-JQ51NZ</AccountId>
+	<Properties>
+		<Property>
+			<Name>overrides-enabled</Name>
+			<Value>true</Value>
+		</Property>
+		<Property>
+			<Name>startshape-action-type</Name>
+			<Value>Listen</Value>
+		</Property>
+		<Property>
+			<Name>startshape-type</Name>
+			<Value>CONNECTOR</Value>
+		</Property>
+		<Property>
+			<Name>startshape-connector-type</Name>
+			<Value>queue</Value>
+		</Property>
+	</Properties>
+	<References>
+		<Ref compId="3b162d5a-91d7-4b35-8cfd-359c284a12f8" name="HNK_HSP_MAP_SAP_Salesforce_SalesOrderCreation" refId="shape2"/>
+		<Ref compId="20dc6304-3082-4adf-8b56-47001f46b6a0" name="HNK_HSP_CON_HTTP_Salesforce" refId="shape3.connection"/>
+		<Ref compId="f2dcc5d2-9a96-471f-8dd3-c20d10842557" name="HNK_HSP_OP_Salesforce_SalesOrderCreate" refId="shape3.operation"/>
+		<Ref compId="70586e06-2db1-4885-8331-88cd9bc539c9" name="LOG Cache" refId="shape9"/>
+		<Ref compId="2ee9f5dc-651f-4ed9-a001-5c3dbba7da5f" name="Error Handling Properties" refId="shape8-parameter-8-processproperty"/>
+		<Ref compId="3519d504-e731-40e6-a572-47b3c4ef5780" name="HNK_HSP_PRF_JSON_SalesOrderCreate_Response" refId="shape7-parameter-5-profile"/>
+		<Ref compId="3519d504-e731-40e6-a572-47b3c4ef5780" name="HNK_HSP_PRF_JSON_SalesOrderCreate_Response" refId="shape7-parameter-7-profile"/>
+		<Ref compId="5ada411f-8a23-4c14-99ec-af14a740e59c" name="HNK_GLO_PP_AlertingOptions" refId="shape14.processproperty5ada411f-8a23-4c14-99ec-af14a740e59c"/>
+		<Ref compId="70586e06-2db1-4885-8331-88cd9bc539c9" name="LOG Cache" refId="shape19"/>
+		<Ref compId="2ee9f5dc-651f-4ed9-a001-5c3dbba7da5f" name="Error Handling Properties" refId="shape22-parameter-8-processproperty"/>
+		<Ref compId="20dc6304-3082-4adf-8b56-47001f46b6a0" name="HNK_HSP_CON_HTTP_Salesforce" refId="shape24.connection"/>
+		<Ref compId="56f23b31-e81e-4b37-a180-52aee1f39eba" name="HNK_HSP_OP_Salesforce_SalesOrderCreate_Token" refId="shape24.operation"/>
+		<Ref compId="3519d504-e731-40e6-a572-47b3c4ef5780" name="HNK_HSP_PRF_JSON_SalesOrderCreate_Response" refId="shape29-0-profile"/>
+		<Ref compId="45c490d3-70e5-4400-9a42-297bdf76bc09" name="Spain_Token_response" refId="shape30-parameter-2-profile"/>
+		<Ref compId="fe4ba011-79c1-4ee5-9758-e601b26f988d" name="HNK_HSP_PP_SalesOrderCreation/Modification" refId="shape23-parameter-1-processproperty"/>
+		<Ref compId="fe4ba011-79c1-4ee5-9758-e601b26f988d" name="HNK_HSP_PP_SalesOrderCreation/Modification" refId="shape23-parameter-2-processproperty"/>
+		<Ref compId="fe4ba011-79c1-4ee5-9758-e601b26f988d" name="HNK_HSP_PP_SalesOrderCreation/Modification" refId="shape23-parameter-0-processproperty"/>
+		<Ref compId="fe4ba011-79c1-4ee5-9758-e601b26f988d" name="HNK_HSP_PP_SalesOrderCreation/Modification" refId="shape23-parameter-3-processproperty"/>
+		<Ref compId="fe4ba011-79c1-4ee5-9758-e601b26f988d" name="HNK_HSP_PP_SalesOrderCreation/Modification" refId="shape23-parameter-4-processproperty"/>
+		<Ref compId="23cb7982-8b00-40c1-9b0e-78e15db940a8" name="HNK_HSP_CON_SpainSF_SalesOrderCreation_Queue" refId="shape1.connection"/>
+		<Ref compId="9d844843-42e5-4493-9fc0-49b0d18818bc" name="HNK_HSP_QUE_Listen_SpainSF_SalesOrderCreation" refId="shape1.operation"/>
+		<Ref compId="af51cd9a-91c0-470e-af4d-bf670dded4b3" name="HNK_GLO_PR_ErrorMessageHandler_Queue" refId="shape35"/>
+	</References>
+	<Description/>
+	<Object>
+		<process allowSimultaneous="true" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="false" workload="general">
+			<shapes>
+				<shape image="start" name="shape1" shapetype="start" userlabel="" x="48.0" y="48.0">
+					<configuration>
+						<connectoraction actionType="Listen" allowDynamicCredentials="NONE" connectionId="23cb7982-8b00-40c1-9b0e-78e15db940a8" connectorType="queue" hideSettings="false" operationId="9d844843-42e5-4493-9fc0-49b0d18818bc">
+							<parameters/>
+						</connectoraction>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape1.dragpoint1" toShape="shape11" x="224.0" y="57.0">
+							<linesegment length="0" name="shape1.dragpoint1.lineseg1" orient="horizontal" x="82.0" y="63.0"/>
+							<linesegment length="0" name="shape1.dragpoint1.lineseg2" orient="vertical" x="82.0" y="63.0"/>
+							<linesegment length="79" name="shape1.dragpoint1.lineseg3" orient="horizontal" x="82.0" y="63.0"/>
+							<linesegment length="0" name="shape1.dragpoint1.lineseg4" orient="vertical" x="161.0" y="63.0"/>
+							<linesegment length="63" name="shape1.dragpoint1.lineseg5" orient="horizontal" x="161.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="map_icon" name="shape2" shapetype="map" userlabel="" x="1008.0" y="48.0">
+					<configuration>
+						<map mapId="3b162d5a-91d7-4b35-8cfd-359c284a12f8"/>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape2.dragpoint1" toShape="shape31" x="1184.0" y="57.0">
+							<linesegment length="0" name="shape2.dragpoint1.lineseg1" orient="horizontal" x="1042.0" y="63.0"/>
+							<linesegment length="0" name="shape2.dragpoint1.lineseg2" orient="vertical" x="1042.0" y="63.0"/>
+							<linesegment length="79" name="shape2.dragpoint1.lineseg3" orient="horizontal" x="1042.0" y="63.0"/>
+							<linesegment length="0" name="shape2.dragpoint1.lineseg4" orient="vertical" x="1121.0" y="63.0"/>
+							<linesegment length="63" name="shape2.dragpoint1.lineseg5" orient="horizontal" x="1121.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="connectoraction_icon" name="shape3" shapetype="connectoraction" userlabel="" x="1392.0" y="48.0">
+					<configuration>
+						<connectoraction actionType="Send" allowDynamicCredentials="NONE" connectionId="20dc6304-3082-4adf-8b56-47001f46b6a0" connectorType="http" hideSettings="false" operationId="f2dcc5d2-9a96-471f-8dd3-c20d10842557" parameter-profile="EMBEDDED|HttpParameterChooser|f2dcc5d2-9a96-471f-8dd3-c20d10842557">
+							<parameters/>
+						</connectoraction>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape3.dragpoint1" toShape="shape27" x="1568.0" y="57.0">
+							<linesegment length="0" name="shape3.dragpoint1.lineseg1" orient="horizontal" x="1426.0" y="63.0"/>
+							<linesegment length="0" name="shape3.dragpoint1.lineseg2" orient="vertical" x="1426.0" y="63.0"/>
+							<linesegment length="79" name="shape3.dragpoint1.lineseg3" orient="horizontal" x="1426.0" y="63.0"/>
+							<linesegment length="0" name="shape3.dragpoint1.lineseg4" orient="vertical" x="1505.0" y="63.0"/>
+							<linesegment length="63" name="shape3.dragpoint1.lineseg5" orient="horizontal" x="1505.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="message_icon" name="shape5" shapetype="message" userlabel="" x="160.0" y="144.0">
+					<configuration>
+						<message combined="false">
+							<msgTxt>&lt;ORDERS05&gt;&lt;IDOC BEGIN="1"&gt;&lt;EDI_DC40 SEGMENT="1"&gt;&lt;TABNAM&gt;EDI_DC40&lt;/TABNAM&gt;&lt;MANDT&gt;700&lt;/MANDT&gt;&lt;DOCNUM&gt;0000000049293931&lt;/DOCNUM&gt;&lt;DOCREL&gt;750&lt;/DOCREL&gt;&lt;STATUS&gt;30&lt;/STATUS&gt;&lt;DIRECT&gt;1&lt;/DIRECT&gt;&lt;OUTMOD&gt;2&lt;/OUTMOD&gt;&lt;IDOCTYP&gt;ORDERS05&lt;/IDOCTYP&gt;&lt;MESTYP&gt;ORDRSP&lt;/MESTYP&gt;&lt;SNDPOR&gt;SAPQH1&lt;/SNDPOR&gt;&lt;SNDPRT&gt;LS&lt;/SNDPRT&gt;&lt;SNDPRN&gt;QH1CLNT700&lt;/SNDPRN&gt;&lt;RCVPOR&gt;BOOMI_IDOC&lt;/RCVPOR&gt;&lt;RCVPRT&gt;LS&lt;/RCVPRT&gt;&lt;RCVPFC&gt;LS&lt;/RCVPFC&gt;&lt;RCVPRN&gt;HSPSFDC&lt;/RCVPRN&gt;&lt;CREDAT&gt;20200326&lt;/CREDAT&gt;&lt;CRETIM&gt;061921&lt;/CRETIM&gt;&lt;SERIAL&gt;20200326061921&lt;/SERIAL&gt;&lt;/EDI_DC40&gt;&lt;E1EDK01 SEGMENT="1"&gt;&lt;ACTION&gt;004&lt;/ACTION&gt;&lt;CURCY&gt;EUR&lt;/CURCY&gt;&lt;WKURS&gt;1.00000&lt;/WKURS&gt;&lt;ZTERM&gt;D015&lt;/ZTERM&gt;&lt;BELNR&gt;0007579524&lt;/BELNR&gt;&lt;VSART&gt;08&lt;/VSART&gt;&lt;VSART_BEZ&gt;Order and return&lt;/VSART_BEZ&gt;&lt;RECIPNT_NO&gt;0000014928&lt;/RECIPNT_NO&gt;&lt;KZAZU&gt;X&lt;/KZAZU&gt;&lt;LIFSK&gt;90&lt;/LIFSK&gt;&lt;LIFSK_BEZ&gt;Picking control&lt;/LIFSK_BEZ&gt;&lt;/E1EDK01&gt;&lt;E1EDK14 SEGMENT="1"&gt;&lt;QUALF&gt;006&lt;/QUALF&gt;&lt;ORGID&gt;10&lt;/ORGID&gt;&lt;/E1EDK14&gt;&lt;E1EDK14 SEGMENT="1"&gt;&lt;QUALF&gt;007&lt;/QUALF&gt;&lt;ORGID&gt;10&lt;/ORGID&gt;&lt;/E1EDK14&gt;&lt;E1EDK14 SEGMENT="1"&gt;&lt;QUALF&gt;008&lt;/QUALF&gt;&lt;ORGID&gt;ES10&lt;/ORGID&gt;&lt;/E1EDK14&gt;&lt;E1EDK14 SEGMENT="1"&gt;&lt;QUALF&gt;012&lt;/QUALF&gt;&lt;ORGID&gt;ZSPS&lt;/ORGID&gt;&lt;/E1EDK14&gt;&lt;E1EDK14 SEGMENT="1"&gt;&lt;QUALF&gt;016&lt;/QUALF&gt;&lt;ORGID&gt;ES12&lt;/ORGID&gt;&lt;/E1EDK14&gt;&lt;E1EDK03 SEGMENT="1"&gt;&lt;IDDAT&gt;002&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDK03&gt;&lt;E1EDK03 SEGMENT="1"&gt;&lt;IDDAT&gt;012&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDK03&gt;&lt;E1EDK03 SEGMENT="1"&gt;&lt;IDDAT&gt;022&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDK03&gt;&lt;E1EDK03 SEGMENT="1"&gt;&lt;IDDAT&gt;025&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;UZEIT&gt;061507&lt;/UZEIT&gt;&lt;/E1EDK03&gt;&lt;E1EDK03 SEGMENT="1"&gt;&lt;IDDAT&gt;023&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDK03&gt;&lt;E1EDK04 SEGMENT="1"&gt;&lt;MWSKZ&gt;R7&lt;/MWSKZ&gt;&lt;MSATZ&gt;21.000&lt;/MSATZ&gt;&lt;MWSBT&gt;21.92&lt;/MWSBT&gt;&lt;/E1EDK04&gt;&lt;E1EDKA1 SEGMENT="1"&gt;&lt;PARVW&gt;AG&lt;/PARVW&gt;&lt;PARTN&gt;0000014928&lt;/PARTN&gt;&lt;NAME1&gt;Rojas Barrios, S.L.&lt;/NAME1&gt;&lt;NAME2&gt;Rojas Barrios&lt;/NAME2&gt;&lt;STRAS&gt;Aldea Del Fresno 9&lt;/STRAS&gt;&lt;ORT01&gt;Alcorcon&lt;/ORT01&gt;&lt;PSTLZ&gt;28925&lt;/PSTLZ&gt;&lt;LAND1&gt;ES&lt;/LAND1&gt;&lt;TELF1&gt;916322476&lt;/TELF1&gt;&lt;TELF2&gt;118722443&lt;/TELF2&gt;&lt;SPRAS&gt;S&lt;/SPRAS&gt;&lt;HAUSN&gt;000000&lt;/HAUSN&gt;&lt;REGIO&gt;30&lt;/REGIO&gt;&lt;SPRAS_ISO&gt;ES&lt;/SPRAS_ISO&gt;&lt;/E1EDKA1&gt;&lt;E1EDKA1 SEGMENT="1"&gt;&lt;PARVW&gt;RE&lt;/PARVW&gt;&lt;PARTN&gt;0000014928&lt;/PARTN&gt;&lt;NAME1&gt;Rojas Barrios, S.L.&lt;/NAME1&gt;&lt;NAME2&gt;Rojas Barrios&lt;/NAME2&gt;&lt;STRAS&gt;Aldea Del Fresno 9&lt;/STRAS&gt;&lt;ORT01&gt;Alcorcon&lt;/ORT01&gt;&lt;PSTLZ&gt;28925&lt;/PSTLZ&gt;&lt;LAND1&gt;ES&lt;/LAND1&gt;&lt;TELF1&gt;916322476&lt;/TELF1&gt;&lt;TELF2&gt;118722443&lt;/TELF2&gt;&lt;SPRAS&gt;S&lt;/SPRAS&gt;&lt;HAUSN&gt;000000&lt;/HAUSN&gt;&lt;REGIO&gt;30&lt;/REGIO&gt;&lt;SPRAS_ISO&gt;ES&lt;/SPRAS_ISO&gt;&lt;/E1EDKA1&gt;&lt;E1EDKA1 SEGMENT="1"&gt;&lt;PARVW&gt;RG&lt;/PARVW&gt;&lt;PARTN&gt;0000014928&lt;/PARTN&gt;&lt;NAME1&gt;Rojas Barrios, S.L.&lt;/NAME1&gt;&lt;NAME2&gt;Rojas Barrios&lt;/NAME2&gt;&lt;STRAS&gt;Aldea Del Fresno 9&lt;/STRAS&gt;&lt;ORT01&gt;Alcorcon&lt;/ORT01&gt;&lt;PSTLZ&gt;28925&lt;/PSTLZ&gt;&lt;LAND1&gt;ES&lt;/LAND1&gt;&lt;TELF1&gt;916322476&lt;/TELF1&gt;&lt;TELF2&gt;118722443&lt;/TELF2&gt;&lt;SPRAS&gt;S&lt;/SPRAS&gt;&lt;HAUSN&gt;000000&lt;/HAUSN&gt;&lt;REGIO&gt;30&lt;/REGIO&gt;&lt;SPRAS_ISO&gt;ES&lt;/SPRAS_ISO&gt;&lt;/E1EDKA1&gt;&lt;E1EDKA1 SEGMENT="1"&gt;&lt;PARVW&gt;WE&lt;/PARVW&gt;&lt;PARTN&gt;0004871106&lt;/PARTN&gt;&lt;NAME1&gt;Rojas Barrios&lt;/NAME1&gt;&lt;STRAS&gt;Calle Blas Infante 7&lt;/STRAS&gt;&lt;ORT01&gt;Mairena Del Alcor&lt;/ORT01&gt;&lt;PSTLZ&gt;28925&lt;/PSTLZ&gt;&lt;LAND1&gt;ES&lt;/LAND1&gt;&lt;ABLAD&gt;DESCARGA DE&lt;/ABLAD&gt;&lt;TELF1&gt;452987569&lt;/TELF1&gt;&lt;SPRAS&gt;S&lt;/SPRAS&gt;&lt;HAUSN&gt;000000&lt;/HAUSN&gt;&lt;REGIO&gt;28&lt;/REGIO&gt;&lt;SPRAS_ISO&gt;ES&lt;/SPRAS_ISO&gt;&lt;/E1EDKA1&gt;&lt;E1EDK02 SEGMENT="1"&gt;&lt;QUALF&gt;002&lt;/QUALF&gt;&lt;BELNR&gt;0007579524&lt;/BELNR&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDK02&gt;&lt;E1EDK17 SEGMENT="1"&gt;&lt;QUALF&gt;001&lt;/QUALF&gt;&lt;LKOND&gt;CIF&lt;/LKOND&gt;&lt;LKTEXT&gt;Costs, insurance &amp;amp; freight&lt;/LKTEXT&gt;&lt;/E1EDK17&gt;&lt;E1EDK17 SEGMENT="1"&gt;&lt;QUALF&gt;002&lt;/QUALF&gt;&lt;LKTEXT&gt;Mercancia en Destino&lt;/LKTEXT&gt;&lt;/E1EDK17&gt;&lt;E1EDK18 SEGMENT="1"&gt;&lt;QUALF&gt;001&lt;/QUALF&gt;&lt;TAGE&gt;45&lt;/TAGE&gt;&lt;PRZNT&gt;0.000&lt;/PRZNT&gt;&lt;ZTERM_TXT&gt;Up to 11.05.2020 without deduction&lt;/ZTERM_TXT&gt;&lt;/E1EDK18&gt;&lt;E1EDK35 SEGMENT="1"&gt;&lt;QUALZ&gt;001&lt;/QUALZ&gt;&lt;CUSADD&gt;ES3&lt;/CUSADD&gt;&lt;/E1EDK35&gt;&lt;E1EDK35 SEGMENT="1"&gt;&lt;QUALZ&gt;003&lt;/QUALZ&gt;&lt;CUSADD&gt;ES3&lt;/CUSADD&gt;&lt;/E1EDK35&gt;&lt;E1EDK35 SEGMENT="1"&gt;&lt;QUALZ&gt;005&lt;/QUALZ&gt;&lt;CUSADD&gt;ES3&lt;/CUSADD&gt;&lt;/E1EDK35&gt;&lt;E1EDKT1 SEGMENT="1"&gt;&lt;TDID&gt;0012&lt;/TDID&gt;&lt;TSSPRAS&gt;S&lt;/TSSPRAS&gt;&lt;TSSPRAS_ISO&gt;ES&lt;/TSSPRAS_ISO&gt;&lt;E1EDKT2 SEGMENT="1"&gt;&lt;TDLINE&gt;"Frescura:GEN __;HK0 __;B5L __;ESP __//Palés:1/2 __;1/4 __;ESP __//Pic&lt;/TDLINE&gt;&lt;TDFORMAT&gt;*&lt;/TDFORMAT&gt;&lt;/E1EDKT2&gt;&lt;E1EDKT2 SEGMENT="1"&gt;&lt;TDLINE&gt;king:Cod X __//Carga:_//Manip (COD-Cajas/Pal):__ -__//Otros:__&lt;/TDLINE&gt;&lt;TDFORMAT&gt;*&lt;/TDFORMAT&gt;&lt;/E1EDKT2&gt;&lt;E1EDKT2 SEGMENT="1"&gt;&lt;TDFORMAT&gt;*&lt;/TDFORMAT&gt;&lt;/E1EDKT2&gt;&lt;E1EDKT2 SEGMENT="1"&gt;&lt;TDFORMAT&gt;*&lt;/TDFORMAT&gt;&lt;/E1EDKT2&gt;&lt;E1EDKT2 SEGMENT="1"&gt;&lt;TDFORMAT&gt;*&lt;/TDFORMAT&gt;&lt;/E1EDKT2&gt;&lt;/E1EDKT1&gt;&lt;E1EDP01 SEGMENT="1"&gt;&lt;POSEX&gt;000010&lt;/POSEX&gt;&lt;ACTION&gt;001&lt;/ACTION&gt;&lt;MENGE&gt;10.000&lt;/MENGE&gt;&lt;MENEE&gt;CR&lt;/MENEE&gt;&lt;PMENE&gt;CS&lt;/PMENE&gt;&lt;VPREI&gt;10.44&lt;/VPREI&gt;&lt;PEINH&gt;1&lt;/PEINH&gt;&lt;NETWR&gt;104.36&lt;/NETWR&gt;&lt;NTGEW&gt;79.990&lt;/NTGEW&gt;&lt;GEWEI&gt;KGM&lt;/GEWEI&gt;&lt;CURCY&gt;EUR&lt;/CURCY&gt;&lt;MATKL&gt;CMG0391&lt;/MATKL&gt;&lt;ANTLF&gt;1&lt;/ANTLF&gt;&lt;BRGEW&gt;87.300&lt;/BRGEW&gt;&lt;PSTYV&gt;ZSTN&lt;/PSTYV&gt;&lt;WERKS&gt;ESL7&lt;/WERKS&gt;&lt;LPRIO&gt;02&lt;/LPRIO&gt;&lt;LPRIO_BEZ&gt;Priority 2&lt;/LPRIO_BEZ&gt;&lt;ROUTE&gt;49&lt;/ROUTE&gt;&lt;ROUTE_BEZ&gt;49&lt;/ROUTE_BEZ&gt;&lt;VSTEL&gt;ESL7&lt;/VSTEL&gt;&lt;E1EDP03 SEGMENT="1"&gt;&lt;IDDAT&gt;025&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;UZEIT&gt;061507&lt;/UZEIT&gt;&lt;/E1EDP03&gt;&lt;E1EDP03 SEGMENT="1"&gt;&lt;IDDAT&gt;023&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDP03&gt;&lt;E1EDP03 SEGMENT="1"&gt;&lt;IDDAT&gt;026&lt;/IDDAT&gt;&lt;DATUM&gt;20200327&lt;/DATUM&gt;&lt;/E1EDP03&gt;&lt;E1EDP03 SEGMENT="1"&gt;&lt;IDDAT&gt;022&lt;/IDDAT&gt;&lt;DATUM&gt;20200326&lt;/DATUM&gt;&lt;/E1EDP03&gt;&lt;E1EDP05 SEGMENT="1"&gt;&lt;ALCKZ&gt;+&lt;/ALCKZ&gt;&lt;KOTXT&gt;DISTRIBUTORS PRICE&lt;/KOTXT&gt;&lt;BETRG&gt;216.80&lt;/BETRG&gt;&lt;KRATE&gt;21.68&lt;/KRATE&gt;&lt;UPRBS&gt;       1&lt;/UPRBS&gt;&lt;MEAUN&gt;CS&lt;/MEAUN&gt;&lt;KOEIN&gt;EUR&lt;/KOEIN&gt;&lt;/E1EDP05&gt;&lt;E1EDP05 SEGMENT="1"&gt;&lt;ALCKZ&gt;-&lt;/ALCKZ&gt;&lt;KSCHL&gt;Z013&lt;/KSCHL&gt;&lt;KOTXT&gt;% Bonus Rep&lt;/KOTXT&gt;&lt;BETRG&gt;120.84&lt;/BETRG&gt;&lt;KPERC&gt;55.740-&lt;/KPERC&gt;&lt;/E1EDP05&gt;&lt;E1EDP05 SEGMENT="1"&gt;&lt;ALCKZ&gt;+&lt;/ALCKZ&gt;&lt;KSCHL&gt;ZGPV&lt;/KSCHL&gt;&lt;KOTXT&gt;SA ECO TAX&lt;/KOTXT&gt;&lt;BETRG&gt;0.51&lt;/BETRG&gt;&lt;KRATE&gt;5.08&lt;/KRATE&gt;&lt;UPRBS&gt;     100&lt;/UPRBS&gt;&lt;MEAUN&gt;CS&lt;/MEAUN&gt;&lt;KOEIN&gt;EUR&lt;/KOEIN&gt;&lt;/E1EDP05&gt;&lt;E1EDP05 SEGMENT="1"&gt;&lt;ALCKZ&gt;+&lt;/ALCKZ&gt;&lt;KSCHL&gt;ZIIE&lt;/KSCHL&gt;&lt;KOTXT&gt;SA Excise Duty&lt;/KOTXT&gt;&lt;BETRG&gt;7.89&lt;/BETRG&gt;&lt;KRATE&gt;9.96&lt;/KRATE&gt;&lt;UPRBS&gt;     100&lt;/UPRBS&gt;&lt;MEAUN&gt;LTR&lt;/MEAUN&gt;&lt;KOEIN&gt;EUR&lt;/KOEIN&gt;&lt;/E1EDP05&gt;&lt;E1EDP20 SEGMENT="1"&gt;&lt;WMENG&gt;10.000&lt;/WMENG&gt;&lt;EDATU&gt;20200327&lt;/EDATU&gt;&lt;EZEIT&gt;080000&lt;/EZEIT&gt;&lt;/E1EDP20&gt;&lt;E1EDP19 SEGMENT="1"&gt;&lt;QUALF&gt;002&lt;/QUALF&gt;&lt;IDTNR&gt;000000000000000035&lt;/IDTNR&gt;&lt;KTEXT&gt;HEINEKEN Lata Retractil 24x33cl ES QH1&lt;/KTEXT&gt;&lt;/E1EDP19&gt;&lt;E1EDP19 SEGMENT="1"&gt;&lt;QUALF&gt;003&lt;/QUALF&gt;&lt;IDTNR&gt;8712000900267&lt;/IDTNR&gt;&lt;/E1EDP19&gt;&lt;E1EDP35 SEGMENT="1"&gt;&lt;QUALZ&gt;003&lt;/QUALZ&gt;&lt;CUSADD&gt;01&lt;/CUSADD&gt;&lt;/E1EDP35&gt;&lt;/E1EDP01&gt;&lt;E1EDS01 SEGMENT="1"&gt;&lt;SUMID&gt;001&lt;/SUMID&gt;&lt;SUMME&gt;1&lt;/SUMME&gt;&lt;/E1EDS01&gt;&lt;E1EDS01 SEGMENT="1"&gt;&lt;SUMID&gt;002&lt;/SUMID&gt;&lt;SUMME&gt;104.36&lt;/SUMME&gt;&lt;SUNIT&gt;EUR&lt;/SUNIT&gt;&lt;/E1EDS01&gt;&lt;/IDOC&gt;&lt;/ORDERS05&gt;</msgTxt>
+							<msgParameters/>
+						</message>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape5.dragpoint1" toShape="shape11" x="224.0" y="57.0">
+							<linesegment length="0" name="shape5.dragpoint1.lineseg1" orient="horizontal" x="194.0" y="159.0"/>
+							<linesegment length="0" name="shape5.dragpoint1.lineseg2" orient="vertical" x="194.0" y="159.0"/>
+							<linesegment length="23" name="shape5.dragpoint1.lineseg3" orient="horizontal" x="194.0" y="159.0"/>
+							<linesegment length="96" name="shape5.dragpoint1.lineseg4" orient="vertical" x="217.0" y="63.0"/>
+							<linesegment length="7" name="shape5.dragpoint1.lineseg5" orient="horizontal" x="217.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="doccacheload_icon" name="shape9" shapetype="doccacheload" userlabel="Cache ErrorMsg" x="1200.0" y="688.0">
+					<configuration>
+						<doccacheload docCache="70586e06-2db1-4885-8331-88cd9bc539c9"/>
+					</configuration>
+					<dragpoints/>
+				</shape>
+				<shape image="message_icon" name="shape7" shapetype="message" userlabel="Send ErrMsg" x="2352.0" y="368.0">
+					<configuration>
+						<message combined="false">
+							<msgTxt>&lt;ErrorMessage&gt;&lt;MessageText&gt;{1}{2}{3}{4}{5}&lt;/MessageText&gt;&lt;/ErrorMessage&gt;</msgTxt>
+							<msgParameters>
+								<parametervalue key="4" valueType="static">
+									<staticparameter staticproperty="The response from Salesforce is -----"/>
+								</parametervalue>
+								<parametervalue key="6" valueType="static">
+									<staticparameter staticproperty="Status Code : "/>
+								</parametervalue>
+								<parametervalue key="7" valueType="profile">
+									<profileelement elementId="3" elementName="statusCode (Root/Object/statusCode)" profileId="3519d504-e731-40e6-a572-47b3c4ef5780" profileType="profile.json"/>
+								</parametervalue>
+								<parametervalue key="8" valueType="static">
+									<staticparameter staticproperty="  Description :  "/>
+								</parametervalue>
+								<parametervalue key="5" valueType="profile">
+									<profileelement elementId="5" elementName="description (Root/Object/description)" profileId="3519d504-e731-40e6-a572-47b3c4ef5780" profileType="profile.json"/>
+								</parametervalue>
+							</msgParameters>
+						</message>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape7.dragpoint1" toShape="shape19" x="2528.0" y="377.0">
+							<linesegment length="0" name="shape7.dragpoint1.lineseg1" orient="horizontal" x="2386.0" y="383.0"/>
+							<linesegment length="0" name="shape7.dragpoint1.lineseg2" orient="vertical" x="2386.0" y="383.0"/>
+							<linesegment length="79" name="shape7.dragpoint1.lineseg3" orient="horizontal" x="2386.0" y="383.0"/>
+							<linesegment length="0" name="shape7.dragpoint1.lineseg4" orient="vertical" x="2465.0" y="383.0"/>
+							<linesegment length="63" name="shape7.dragpoint1.lineseg5" orient="horizontal" x="2465.0" y="383.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="documentproperties_icon" name="shape8" shapetype="documentproperties" userlabel="Set AlertDetails" x="2160.0" y="368.0">
+					<configuration>
+						<documentproperties>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - DPP_Exception" persist="false" propertyId="process.DPP_Exception">
+								<sourcevalues>
+									<parametervalue key="1" valueType="static">
+										<staticparameter staticproperty="true"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - DPP_AlertMailSubject" persist="false" propertyId="process.DPP_AlertMailSubject">
+								<sourcevalues>
+									<parametervalue key="2" valueType="static">
+										<staticparameter staticproperty="Error in Boomi SpainSF SalesOrderCreation/Modification Interface("/>
+									</parametervalue>
+									<parametervalue key="8" valueType="definedparameter">
+										<definedprocessparameter componentId="2ee9f5dc-651f-4ed9-a001-5c3dbba7da5f" componentName="Error Handling Properties" propertyKey="451d9886-f921-4a37-b8f2-024079fa3ec7" propertyLabel="Environment"/>
+									</parametervalue>
+									<parametervalue key="5" valueType="static">
+										<staticparameter staticproperty=")"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - DPP_AlertMailBody" persist="false" propertyId="process.DPP_AlertMailBody">
+								<sourcevalues>
+									<parametervalue key="3" valueType="static">
+										<staticparameter staticproperty="Error response from Salesforce"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - DPP_ProcessName" persist="false" propertyId="process.DPP_ProcessName" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="7" valueType="execution">
+										<executionparameter executionproperty="Process Name"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+						</documentproperties>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape8.dragpoint1" toShape="shape7" x="2336.0" y="377.0">
+							<linesegment length="0" name="shape8.dragpoint1.lineseg1" orient="horizontal" x="2194.0" y="383.0"/>
+							<linesegment length="0" name="shape8.dragpoint1.lineseg2" orient="vertical" x="2194.0" y="383.0"/>
+							<linesegment length="79" name="shape8.dragpoint1.lineseg3" orient="horizontal" x="2194.0" y="383.0"/>
+							<linesegment length="0" name="shape8.dragpoint1.lineseg4" orient="vertical" x="2273.0" y="383.0"/>
+							<linesegment length="63" name="shape8.dragpoint1.lineseg5" orient="horizontal" x="2273.0" y="383.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="documentproperties_icon" name="shape11" shapetype="documentproperties" userlabel="" x="240.0" y="48.0">
+					<configuration>
+						<documentproperties>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Document Property - DDP_LogKey" persist="false" propertyId="dynamicdocument.DDP_LogKey">
+								<sourcevalues>
+									<parametervalue key="1" valueType="static">
+										<staticparameter staticproperty="1"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - DPP_IncomingData" persist="false" propertyId="process.DPP_IncomingData" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="2" valueType="current"/>
+								</sourcevalues>
+							</documentproperty>
+						</documentproperties>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape11.dragpoint1" toShape="shape18" x="416.0" y="57.0">
+							<linesegment length="0" name="shape11.dragpoint1.lineseg1" orient="horizontal" x="274.0" y="63.0"/>
+							<linesegment length="0" name="shape11.dragpoint1.lineseg2" orient="vertical" x="274.0" y="63.0"/>
+							<linesegment length="79" name="shape11.dragpoint1.lineseg3" orient="horizontal" x="274.0" y="63.0"/>
+							<linesegment length="0" name="shape11.dragpoint1.lineseg4" orient="vertical" x="353.0" y="63.0"/>
+							<linesegment length="63" name="shape11.dragpoint1.lineseg5" orient="horizontal" x="353.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="catcherrors_icon" name="shape10" shapetype="catcherrors" userlabel="" x="624.0" y="48.0">
+					<configuration>
+						<catcherrors catchAll="true" retryCount="0"/>
+					</configuration>
+					<dragpoints>
+						<dragpoint identifier="default" name="shape10.dragpoint1" text="Try" toShape="shape34" x="800.0" y="57.0">
+							<linesegment length="0" name="shape10.dragpoint1.lineseg1" orient="horizontal" x="658.0" y="63.0"/>
+							<linesegment length="0" name="shape10.dragpoint1.lineseg2" orient="vertical" x="658.0" y="63.0"/>
+							<linesegment length="79" name="shape10.dragpoint1.lineseg3" orient="horizontal" x="658.0" y="63.0"/>
+							<linesegment length="0" name="shape10.dragpoint1.lineseg4" orient="vertical" x="737.0" y="63.0"/>
+							<linesegment label="Try" length="63" name="shape10.dragpoint1.lineseg5" orient="horizontal" x="737.0" y="63.0"/>
+						</dragpoint>
+						<dragpoint identifier="error" name="shape10.dragpoint2" text="Catch" toShape="shape22" x="800.0" y="697.0">
+							<linesegment length="0" name="shape10.dragpoint2.lineseg1" orient="horizontal" x="658.0" y="63.0"/>
+							<linesegment length="0" name="shape10.dragpoint2.lineseg2" orient="vertical" x="658.0" y="63.0"/>
+							<linesegment length="79" name="shape10.dragpoint2.lineseg3" orient="horizontal" x="658.0" y="63.0"/>
+							<linesegment length="640" name="shape10.dragpoint2.lineseg4" orient="vertical" x="737.0" y="63.0"/>
+							<linesegment label="Catch" length="63" name="shape10.dragpoint2.lineseg5" orient="horizontal" x="737.0" y="703.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="decision_icon" name="shape13" shapetype="decision" userlabel="Exception?" x="624.0" y="848.0">
+					<configuration>
+						<decision comparison="equals" name="Exception?">
+							<decisionvalue valueType="process">
+								<processparameter processproperty="DPP_Exception" processpropertydefaultvalue=""/>
+							</decisionvalue>
+							<decisionvalue valueType="static">
+								<staticparameter staticproperty="true"/>
+							</decisionvalue>
+						</decision>
+					</configuration>
+					<dragpoints>
+						<dragpoint identifier="true" name="shape13.dragpoint1" text="True" toShape="shape14" x="800.0" y="857.0">
+							<linesegment length="0" name="shape13.dragpoint1.lineseg1" orient="horizontal" x="658.0" y="863.0"/>
+							<linesegment length="0" name="shape13.dragpoint1.lineseg2" orient="vertical" x="658.0" y="863.0"/>
+							<linesegment length="79" name="shape13.dragpoint1.lineseg3" orient="horizontal" x="658.0" y="863.0"/>
+							<linesegment length="0" name="shape13.dragpoint1.lineseg4" orient="vertical" x="737.0" y="863.0"/>
+							<linesegment label="True" length="63" name="shape13.dragpoint1.lineseg5" orient="horizontal" x="737.0" y="863.0"/>
+						</dragpoint>
+						<dragpoint identifier="false" name="shape13.dragpoint2" text="False" toShape="shape16" x="800.0" y="1017.0">
+							<linesegment length="0" name="shape13.dragpoint2.lineseg1" orient="horizontal" x="658.0" y="863.0"/>
+							<linesegment length="0" name="shape13.dragpoint2.lineseg2" orient="vertical" x="658.0" y="863.0"/>
+							<linesegment length="79" name="shape13.dragpoint2.lineseg3" orient="horizontal" x="658.0" y="863.0"/>
+							<linesegment length="160" name="shape13.dragpoint2.lineseg4" orient="vertical" x="737.0" y="863.0"/>
+							<linesegment label="False" length="63" name="shape13.dragpoint2.lineseg5" orient="horizontal" x="737.0" y="1023.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="documentproperties_icon" name="shape14" shapetype="documentproperties" userlabel="Set Alert message Template" x="816.0" y="848.0">
+					<configuration>
+						<documentproperties>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Process Property - HNK_GLO_PP_AlertingOptions - AlertEmailSubject" persist="false" propertyId="definedprocess.5ada411f-8a23-4c14-99ec-af14a740e59c@0e5d6877-6d87-4e0a-88d2-994e773f27a8">
+								<sourcevalues>
+									<parametervalue key="1" valueType="process">
+										<processparameter processproperty="DPP_AlertMailSubject" processpropertydefaultvalue=""/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Process Property - HNK_GLO_PP_AlertingOptions - AlertEmailSignature" persist="false" propertyId="definedprocess.5ada411f-8a23-4c14-99ec-af14a740e59c@41ecf5b7-3f62-4593-b54a-59b127a5831b">
+								<sourcevalues>
+									<parametervalue key="2" valueType="static">
+										<staticparameter staticproperty="For further handling, please log a ticket for integration AMS Team"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Process Property - HNK_GLO_PP_AlertingOptions - AlertEmailBody" persist="false" propertyId="definedprocess.5ada411f-8a23-4c14-99ec-af14a740e59c@a479e4a6-6b79-4fad-9fce-5ffab32dbcd2">
+								<sourcevalues>
+									<parametervalue key="3" valueType="process">
+										<processparameter processproperty="DPP_AlertMailBody" processpropertydefaultvalue=""/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Process Property - HNK_GLO_PP_AlertingOptions - AlertProcessID" persist="false" propertyId="definedprocess.5ada411f-8a23-4c14-99ec-af14a740e59c@9fff87fd-80a2-4cd7-9ff7-94922a04d608" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="12" valueType="static">
+										<staticparameter staticproperty="SpainSF"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Process Property - HNK_GLO_PP_AlertingOptions - AlertOpCO" persist="false" propertyId="definedprocess.5ada411f-8a23-4c14-99ec-af14a740e59c@8174d114-46f1-4c11-a97b-1e6eb99ebf0c" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="13" valueType="static">
+										<staticparameter staticproperty="HSP"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - DPP_ExecutionID" persist="false" propertyId="process.DPP_ExecutionID" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="14" valueType="execution">
+										<executionparameter executionproperty="Execution Id"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+						</documentproperties>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape14.dragpoint1" toShape="shape35" x="992.0" y="857.0">
+							<linesegment length="0" name="shape14.dragpoint1.lineseg1" orient="horizontal" x="850.0" y="863.0"/>
+							<linesegment length="0" name="shape14.dragpoint1.lineseg2" orient="vertical" x="850.0" y="863.0"/>
+							<linesegment length="79" name="shape14.dragpoint1.lineseg3" orient="horizontal" x="850.0" y="863.0"/>
+							<linesegment length="0" name="shape14.dragpoint1.lineseg4" orient="vertical" x="929.0" y="863.0"/>
+							<linesegment length="63" name="shape14.dragpoint1.lineseg5" orient="horizontal" x="929.0" y="863.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="stop_icon" name="shape16" shapetype="stop" userlabel="" x="816.0" y="1008.0">
+					<configuration>
+						<stop continue="true"/>
+					</configuration>
+					<dragpoints/>
+				</shape>
+				<shape image="branch_icon" name="shape18" shapetype="branch" userlabel="" x="432.0" y="48.0">
+					<configuration>
+						<branch numBranches="2"/>
+					</configuration>
+					<dragpoints>
+						<dragpoint identifier="1" name="shape18.dragpoint1" text="1" toShape="shape10" x="608.0" y="57.0">
+							<linesegment length="0" name="shape18.dragpoint1.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+							<linesegment length="0" name="shape18.dragpoint1.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+							<linesegment length="79" name="shape18.dragpoint1.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+							<linesegment length="0" name="shape18.dragpoint1.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+							<linesegment label="1" length="63" name="shape18.dragpoint1.lineseg5" orient="horizontal" x="545.0" y="63.0"/>
+						</dragpoint>
+						<dragpoint identifier="2" name="shape18.dragpoint2" text="2" toShape="shape13" x="608.0" y="857.0">
+							<linesegment length="0" name="shape18.dragpoint2.lineseg1" orient="horizontal" x="466.0" y="63.0"/>
+							<linesegment length="0" name="shape18.dragpoint2.lineseg2" orient="vertical" x="466.0" y="63.0"/>
+							<linesegment length="79" name="shape18.dragpoint2.lineseg3" orient="horizontal" x="466.0" y="63.0"/>
+							<linesegment length="800" name="shape18.dragpoint2.lineseg4" orient="vertical" x="545.0" y="63.0"/>
+							<linesegment label="2" length="63" name="shape18.dragpoint2.lineseg5" orient="horizontal" x="545.0" y="863.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="message_icon" name="shape20" shapetype="message" userlabel="Send ErrMsg" x="1008.0" y="688.0">
+					<configuration>
+						<message combined="false">
+							<msgTxt>&lt;ErrorMessage&gt;&lt;MessageText&gt;{1}&lt;/MessageText&gt;&lt;/ErrorMessage&gt;</msgTxt>
+							<msgParameters>
+								<parametervalue key="9" valueType="track">
+									<trackparameter defaultValue="" propertyId="meta.base.catcherrorsmessage" propertyName="Base - Try/Catch Message"/>
+								</parametervalue>
+							</msgParameters>
+						</message>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape20.dragpoint1" toShape="shape9" x="1184.0" y="697.0">
+							<linesegment length="0" name="shape20.dragpoint1.lineseg1" orient="horizontal" x="1042.0" y="703.0"/>
+							<linesegment length="0" name="shape20.dragpoint1.lineseg2" orient="vertical" x="1042.0" y="703.0"/>
+							<linesegment length="79" name="shape20.dragpoint1.lineseg3" orient="horizontal" x="1042.0" y="703.0"/>
+							<linesegment length="0" name="shape20.dragpoint1.lineseg4" orient="vertical" x="1121.0" y="703.0"/>
+							<linesegment length="63" name="shape20.dragpoint1.lineseg5" orient="horizontal" x="1121.0" y="703.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="doccacheload_icon" name="shape19" shapetype="doccacheload" userlabel="Cache ErrorMsg" x="2544.0" y="368.0">
+					<configuration>
+						<doccacheload docCache="70586e06-2db1-4885-8331-88cd9bc539c9"/>
+					</configuration>
+					<dragpoints/>
+				</shape>
+				<shape image="documentproperties_icon" name="shape22" shapetype="documentproperties" userlabel="Set AlertDetails" x="816.0" y="688.0">
+					<configuration>
+						<documentproperties>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - DPP_Exception" persist="false" propertyId="process.DPP_Exception">
+								<sourcevalues>
+									<parametervalue key="1" valueType="static">
+										<staticparameter staticproperty="true"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - DPP_AlertMailSubject" persist="false" propertyId="process.DPP_AlertMailSubject">
+								<sourcevalues>
+									<parametervalue key="2" valueType="static">
+										<staticparameter staticproperty="Error in Boomi SpainSF SalesOrderCreation/Modification Interface("/>
+									</parametervalue>
+									<parametervalue key="8" valueType="definedparameter">
+										<definedprocessparameter componentId="2ee9f5dc-651f-4ed9-a001-5c3dbba7da5f" componentName="Error Handling Properties" propertyKey="451d9886-f921-4a37-b8f2-024079fa3ec7" propertyLabel="Environment"/>
+									</parametervalue>
+									<parametervalue key="5" valueType="static">
+										<staticparameter staticproperty=")"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - DPP_AlertMailBody" persist="false" propertyId="process.DPP_AlertMailBody">
+								<sourcevalues>
+									<parametervalue key="3" valueType="static">
+										<staticparameter staticproperty="Error response from Salesforce"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - DPP_ProcessName" persist="false" propertyId="process.DPP_ProcessName" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="7" valueType="execution">
+										<executionparameter executionproperty="Process Name"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+						</documentproperties>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape22.dragpoint1" toShape="shape20" x="992.0" y="697.0">
+							<linesegment length="0" name="shape22.dragpoint1.lineseg1" orient="horizontal" x="850.0" y="703.0"/>
+							<linesegment length="0" name="shape22.dragpoint1.lineseg2" orient="vertical" x="850.0" y="703.0"/>
+							<linesegment length="79" name="shape22.dragpoint1.lineseg3" orient="horizontal" x="850.0" y="703.0"/>
+							<linesegment length="0" name="shape22.dragpoint1.lineseg4" orient="vertical" x="929.0" y="703.0"/>
+							<linesegment length="63" name="shape22.dragpoint1.lineseg5" orient="horizontal" x="929.0" y="703.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="message_icon" name="shape23" shapetype="message" userlabel="Request Token" x="1776.0" y="48.0">
+					<configuration>
+						<message combined="false">
+							<msgTxt>grant_type={1}&amp;client_id={2}&amp;client_secret={3}&amp;username={4}&amp;password={5}</msgTxt>
+							<msgParameters>
+								<parametervalue key="0" valueType="definedparameter">
+									<definedprocessparameter componentId="fe4ba011-79c1-4ee5-9758-e601b26f988d" componentName="HNK_HSP_PP_SalesOrderCreation/Modification" propertyKey="d9881e57-ffaf-4788-8eac-321081ab88d5" propertyLabel="grant_type"/>
+								</parametervalue>
+								<parametervalue key="1" valueType="definedparameter">
+									<definedprocessparameter componentId="fe4ba011-79c1-4ee5-9758-e601b26f988d" componentName="HNK_HSP_PP_SalesOrderCreation/Modification" propertyKey="aa0b54be-b2e2-4974-aea5-0ac335a9184f" propertyLabel="client_id"/>
+								</parametervalue>
+								<parametervalue key="2" valueType="definedparameter">
+									<definedprocessparameter componentId="fe4ba011-79c1-4ee5-9758-e601b26f988d" componentName="HNK_HSP_PP_SalesOrderCreation/Modification" propertyKey="07aa3696-1fca-4cd8-a63b-4d944e98705b" propertyLabel="client_secret"/>
+								</parametervalue>
+								<parametervalue key="3" valueType="definedparameter">
+									<definedprocessparameter componentId="fe4ba011-79c1-4ee5-9758-e601b26f988d" componentName="HNK_HSP_PP_SalesOrderCreation/Modification" propertyKey="a799016a-9fc8-4819-b736-e412ea04a643" propertyLabel="username"/>
+								</parametervalue>
+								<parametervalue key="4" valueType="definedparameter">
+									<definedprocessparameter componentId="fe4ba011-79c1-4ee5-9758-e601b26f988d" componentName="HNK_HSP_PP_SalesOrderCreation/Modification" propertyKey="00dc2235-a43a-4361-8382-1f9eb62244a5" propertyLabel="password"/>
+								</parametervalue>
+							</msgParameters>
+						</message>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape23.dragpoint1" toShape="shape24" x="1952.0" y="57.0">
+							<linesegment length="0" name="shape23.dragpoint1.lineseg1" orient="horizontal" x="1810.0" y="63.0"/>
+							<linesegment length="0" name="shape23.dragpoint1.lineseg2" orient="vertical" x="1810.0" y="63.0"/>
+							<linesegment length="79" name="shape23.dragpoint1.lineseg3" orient="horizontal" x="1810.0" y="63.0"/>
+							<linesegment length="0" name="shape23.dragpoint1.lineseg4" orient="vertical" x="1889.0" y="63.0"/>
+							<linesegment length="63" name="shape23.dragpoint1.lineseg5" orient="horizontal" x="1889.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="connectoraction_icon" name="shape24" shapetype="connectoraction" userlabel="" x="1968.0" y="48.0">
+					<configuration>
+						<connectoraction actionType="Send" allowDynamicCredentials="NONE" connectionId="20dc6304-3082-4adf-8b56-47001f46b6a0" connectorType="http" hideSettings="false" operationId="56f23b31-e81e-4b37-a180-52aee1f39eba" parameter-profile="EMBEDDED|HttpParameterChooser|56f23b31-e81e-4b37-a180-52aee1f39eba">
+							<parameters/>
+						</connectoraction>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape24.dragpoint1" toShape="shape30" x="2144.0" y="57.0">
+							<linesegment length="0" name="shape24.dragpoint1.lineseg1" orient="horizontal" x="2002.0" y="63.0"/>
+							<linesegment length="0" name="shape24.dragpoint1.lineseg2" orient="vertical" x="2002.0" y="63.0"/>
+							<linesegment length="79" name="shape24.dragpoint1.lineseg3" orient="horizontal" x="2002.0" y="63.0"/>
+							<linesegment length="0" name="shape24.dragpoint1.lineseg4" orient="vertical" x="2081.0" y="63.0"/>
+							<linesegment length="63" name="shape24.dragpoint1.lineseg5" orient="horizontal" x="2081.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="decision_icon" name="shape29" shapetype="decision" userlabel="Success?" x="1776.0" y="208.0">
+					<configuration>
+						<decision comparison="equals" name="Success?">
+							<decisionvalue valueType="profile">
+								<profileelement elementId="3" elementName="statusCode (Root/Object/statusCode)" profileId="3519d504-e731-40e6-a572-47b3c4ef5780" profileType="profile.json"/>
+							</decisionvalue>
+							<decisionvalue valueType="static">
+								<staticparameter staticproperty="200"/>
+							</decisionvalue>
+						</decision>
+					</configuration>
+					<dragpoints>
+						<dragpoint identifier="true" name="shape29.dragpoint1" text="True" toShape="shape26" x="1952.0" y="217.0">
+							<linesegment length="0" name="shape29.dragpoint1.lineseg1" orient="horizontal" x="1810.0" y="223.0"/>
+							<linesegment length="0" name="shape29.dragpoint1.lineseg2" orient="vertical" x="1810.0" y="223.0"/>
+							<linesegment length="79" name="shape29.dragpoint1.lineseg3" orient="horizontal" x="1810.0" y="223.0"/>
+							<linesegment length="0" name="shape29.dragpoint1.lineseg4" orient="vertical" x="1889.0" y="223.0"/>
+							<linesegment label="True" length="63" name="shape29.dragpoint1.lineseg5" orient="horizontal" x="1889.0" y="223.0"/>
+						</dragpoint>
+						<dragpoint identifier="false" name="shape29.dragpoint2" text="False" toShape="shape32" x="1952.0" y="377.0">
+							<linesegment length="0" name="shape29.dragpoint2.lineseg1" orient="horizontal" x="1810.0" y="223.0"/>
+							<linesegment length="0" name="shape29.dragpoint2.lineseg2" orient="vertical" x="1810.0" y="223.0"/>
+							<linesegment length="79" name="shape29.dragpoint2.lineseg3" orient="horizontal" x="1810.0" y="223.0"/>
+							<linesegment length="160" name="shape29.dragpoint2.lineseg4" orient="vertical" x="1889.0" y="223.0"/>
+							<linesegment label="False" length="63" name="shape29.dragpoint2.lineseg5" orient="horizontal" x="1889.0" y="383.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="stop_icon" name="shape26" shapetype="stop" userlabel="" x="1968.0" y="208.0">
+					<configuration>
+						<stop continue="true"/>
+					</configuration>
+					<dragpoints/>
+				</shape>
+				<shape image="decision_icon" name="shape27" shapetype="decision" userlabel="Auth Error?" x="1584.0" y="48.0">
+					<configuration>
+						<decision comparison="equals" name="Auth Error?">
+							<decisionvalue valueType="track">
+								<trackparameter defaultValue="" propertyId="meta.base.applicationstatuscode" propertyName="Base - Application Status Code"/>
+							</decisionvalue>
+							<decisionvalue valueType="static">
+								<staticparameter staticproperty="401"/>
+							</decisionvalue>
+						</decision>
+					</configuration>
+					<dragpoints>
+						<dragpoint identifier="true" name="shape27.dragpoint1" text="True" toShape="shape23" x="1760.0" y="57.0">
+							<linesegment length="0" name="shape27.dragpoint1.lineseg1" orient="horizontal" x="1618.0" y="63.0"/>
+							<linesegment length="0" name="shape27.dragpoint1.lineseg2" orient="vertical" x="1618.0" y="63.0"/>
+							<linesegment length="79" name="shape27.dragpoint1.lineseg3" orient="horizontal" x="1618.0" y="63.0"/>
+							<linesegment length="0" name="shape27.dragpoint1.lineseg4" orient="vertical" x="1697.0" y="63.0"/>
+							<linesegment label="True" length="63" name="shape27.dragpoint1.lineseg5" orient="horizontal" x="1697.0" y="63.0"/>
+						</dragpoint>
+						<dragpoint identifier="false" name="shape27.dragpoint2" text="False" toShape="shape29" x="1760.0" y="217.0">
+							<linesegment length="0" name="shape27.dragpoint2.lineseg1" orient="horizontal" x="1618.0" y="63.0"/>
+							<linesegment length="0" name="shape27.dragpoint2.lineseg2" orient="vertical" x="1618.0" y="63.0"/>
+							<linesegment length="79" name="shape27.dragpoint2.lineseg3" orient="horizontal" x="1618.0" y="63.0"/>
+							<linesegment length="160" name="shape27.dragpoint2.lineseg4" orient="vertical" x="1697.0" y="63.0"/>
+							<linesegment label="False" length="63" name="shape27.dragpoint2.lineseg5" orient="horizontal" x="1697.0" y="223.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="documentproperties_icon" name="shape30" shapetype="documentproperties" userlabel="Persist the token" x="2160.0" y="48.0">
+					<configuration>
+						<documentproperties>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Process Property - DPP_AuthCode" persist="true" propertyId="process.DPP_AuthCode" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="1" valueType="static">
+										<staticparameter staticproperty="Bearer "/>
+									</parametervalue>
+									<parametervalue key="2" valueType="profile">
+										<profileelement elementId="3" elementName="access_token (Root/Object/access_token)" profileId="45c490d3-70e5-4400-9a42-297bdf76bc09" profileType="profile.json"/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+						</documentproperties>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape30.dragpoint1" toShape="shape34" x="800.0" y="57.0">
+							<linesegment length="10" name="shape30.dragpoint1.lineseg1" orient="horizontal" x="2194.0" y="63.0"/>
+							<linesegment length="51" name="shape30.dragpoint1.lineseg2" orient="vertical" x="2204.0" y="12.0"/>
+							<linesegment length="1408" name="shape30.dragpoint1.lineseg3" orient="horizontal" x="796.0" y="12.0"/>
+							<linesegment length="51" name="shape30.dragpoint1.lineseg4" orient="vertical" x="796.0" y="12.0"/>
+							<linesegment length="4" name="shape30.dragpoint1.lineseg5" orient="horizontal" x="796.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="documentproperties_icon" name="shape31" shapetype="documentproperties" userlabel="Set Authorization " x="1200.0" y="48.0">
+					<configuration>
+						<documentproperties>
+							<documentproperty defaultValue="" isDynamicCredential="false" isTradingPartner="false" name="Dynamic Document Property - Authorization" persist="false" propertyId="dynamicdocument.Authorization" shouldEncrypt="false">
+								<sourcevalues>
+									<parametervalue key="1" valueType="process">
+										<processparameter processproperty="DPP_AuthCode" processpropertydefaultvalue=""/>
+									</parametervalue>
+								</sourcevalues>
+							</documentproperty>
+						</documentproperties>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape31.dragpoint1" toShape="shape3" x="1376.0" y="57.0">
+							<linesegment length="0" name="shape31.dragpoint1.lineseg1" orient="horizontal" x="1234.0" y="63.0"/>
+							<linesegment length="0" name="shape31.dragpoint1.lineseg2" orient="vertical" x="1234.0" y="63.0"/>
+							<linesegment length="79" name="shape31.dragpoint1.lineseg3" orient="horizontal" x="1234.0" y="63.0"/>
+							<linesegment length="0" name="shape31.dragpoint1.lineseg4" orient="vertical" x="1313.0" y="63.0"/>
+							<linesegment length="63" name="shape31.dragpoint1.lineseg5" orient="horizontal" x="1313.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="branch_icon" name="shape32" shapetype="branch" userlabel="" x="1968.0" y="368.0">
+					<configuration>
+						<branch numBranches="2"/>
+					</configuration>
+					<dragpoints>
+						<dragpoint identifier="1" name="shape32.dragpoint1" text="1" toShape="shape8" x="2144.0" y="377.0">
+							<linesegment length="0" name="shape32.dragpoint1.lineseg1" orient="horizontal" x="2002.0" y="383.0"/>
+							<linesegment length="0" name="shape32.dragpoint1.lineseg2" orient="vertical" x="2002.0" y="383.0"/>
+							<linesegment length="79" name="shape32.dragpoint1.lineseg3" orient="horizontal" x="2002.0" y="383.0"/>
+							<linesegment length="0" name="shape32.dragpoint1.lineseg4" orient="vertical" x="2081.0" y="383.0"/>
+							<linesegment label="1" length="63" name="shape32.dragpoint1.lineseg5" orient="horizontal" x="2081.0" y="383.0"/>
+						</dragpoint>
+						<dragpoint identifier="2" name="shape32.dragpoint2" text="2" toShape="shape33" x="2144.0" y="537.0">
+							<linesegment length="0" name="shape32.dragpoint2.lineseg1" orient="horizontal" x="2002.0" y="383.0"/>
+							<linesegment length="0" name="shape32.dragpoint2.lineseg2" orient="vertical" x="2002.0" y="383.0"/>
+							<linesegment length="79" name="shape32.dragpoint2.lineseg3" orient="horizontal" x="2002.0" y="383.0"/>
+							<linesegment length="160" name="shape32.dragpoint2.lineseg4" orient="vertical" x="2081.0" y="383.0"/>
+							<linesegment label="2" length="63" name="shape32.dragpoint2.lineseg5" orient="horizontal" x="2081.0" y="543.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="stop_icon" name="shape33" shapetype="stop" userlabel="" x="2160.0" y="528.0">
+					<configuration>
+						<stop continue="true"/>
+					</configuration>
+					<dragpoints/>
+				</shape>
+				<shape image="message_icon" name="shape34" shapetype="message" userlabel="Incoming Data" x="816.0" y="48.0">
+					<configuration>
+						<message combined="false">
+							<msgTxt>{1}</msgTxt>
+							<msgParameters>
+								<parametervalue key="0" valueType="process">
+									<processparameter processproperty="DPP_IncomingData" processpropertydefaultvalue=""/>
+								</parametervalue>
+							</msgParameters>
+						</message>
+					</configuration>
+					<dragpoints>
+						<dragpoint name="shape34.dragpoint1" toShape="shape2" x="992.0" y="57.0">
+							<linesegment length="0" name="shape34.dragpoint1.lineseg1" orient="horizontal" x="850.0" y="63.0"/>
+							<linesegment length="0" name="shape34.dragpoint1.lineseg2" orient="vertical" x="850.0" y="63.0"/>
+							<linesegment length="79" name="shape34.dragpoint1.lineseg3" orient="horizontal" x="850.0" y="63.0"/>
+							<linesegment length="0" name="shape34.dragpoint1.lineseg4" orient="vertical" x="929.0" y="63.0"/>
+							<linesegment length="63" name="shape34.dragpoint1.lineseg5" orient="horizontal" x="929.0" y="63.0"/>
+						</dragpoint>
+					</dragpoints>
+				</shape>
+				<shape image="processcall_icon" name="shape35" shapetype="processcall" userlabel="" x="1008.0" y="848.0">
+					<configuration>
+						<processcall abort="true" processId="af51cd9a-91c0-470e-af4d-bf670dded4b3" wait="true">
+							<parameters/>
+							<returnpaths/>
+						</processcall>
+					</configuration>
+					<dragpoints/>
+				</shape>
+			</shapes>
+		</process>
+	</Object>
+	<Overrides>
+		<Connections>
+			<ConnectionOverride id="48bb2c3c-4a6d-49e6-9f54-76d9cd09b1b4">
+				<field id="queueComponentId" label="Queue Component ID" overrideable="false" xpath="QueueSettings/queueComponentId/text()"/>
+			</ConnectionOverride>
+			<ConnectionOverride id="20dc6304-3082-4adf-8b56-47001f46b6a0">
+				<field id="url" label="URL" overrideable="true" xpath="HttpSettings/@url"/>
+				<field id="connectTimeout" label="Connect Timeout" overrideable="false" xpath="HttpSettings/@connectTimeout"/>
+				<field id="readTimeout" label="Read Timeout" overrideable="false" xpath="HttpSettings/@readTimeout"/>
+				<field id="useBasicAuth" label="Use Basic Authentication" overrideable="false" xpath="HttpSettings/@useBasicAuth"/>
+				<field id="user" label="User" overrideable="false" xpath="HttpSettings/AuthSettings/@user"/>
+				<field id="password" label="Password" overrideable="false" xpath="HttpSettings/AuthSettings/@password"/>
+				<field id="consumerKey" label="OAuth Consumer Key" overrideable="false" xpath="HttpSettings/OAuthSettings/@consumerKey"/>
+				<field id="accessToken" label="OAuth Access Token" overrideable="false" xpath="HttpSettings/OAuthSettings/@accessToken"/>
+				<field id="tokenSecret" label="OAuth Token Secret" overrideable="false" xpath="HttpSettings/OAuthSettings/@tokenSecret"/>
+				<field id="requestTokenURL" label="OAuth Request Token URL" overrideable="false" xpath="HttpSettings/OAuthSettings/@requestTokenURL"/>
+				<field id="authorizationURL" label="OAuth Authorization URL" overrideable="false" xpath="HttpSettings/OAuthSettings/@authorizationURL"/>
+				<field id="accessTokenURL" label="OAuth Access URL" overrideable="false" xpath="HttpSettings/OAuthSettings/@accessTokenURL"/>
+				<field id="consumerSecret" label="OAuth Consumer Secret" overrideable="false" xpath="HttpSettings/OAuthSettings/@consumerSecret"/>
+				<field id="realm" label="OAuth Realm" overrideable="false" xpath="HttpSettings/OAuthSettings/@realm"/>
+				<field id="clientauth" label="Use Client Authorization" overrideable="false" xpath="HttpSettings/SSLOptions/@clientauth"/>
+				<field id="clientsslalias" label="Client SSL Certificate" overrideable="false" xpath="HttpSettings/SSLOptions/@clientsslalias"/>
+				<field id="trustServerCert" label="Use Trusted SSL Certificate" overrideable="false" xpath="HttpSettings/SSLOptions/@trustServerCert"/>
+				<field id="trustedcertalias" label="Trust SSL Server Certificate" overrideable="false" xpath="HttpSettings/SSLOptions/@trustedcertalias"/>
+				<field id="clientId" label="OAuth2 Client ID" overrideable="false" xpath="HttpSettings/OAuth2Settings/credentials/@clientId"/>
+				<field id="clientSecret" label="OAuth2 Client Secret" overrideable="false" xpath="HttpSettings/OAuth2Settings/credentials/@clientSecret"/>
+				<field id="authTokenURL2" label="OAuth2 Authorization Token URL" overrideable="false" xpath="HttpSettings/OAuth2Settings/authorizationTokenEndpoint/@url"/>
+				<field id="accessTokenURL2" label="OAuth2 Access Token URL" overrideable="false" xpath="HttpSettings/OAuth2Settings/accessTokenEndpoint/@url"/>
+				<field id="scope" label="OAuth2 Scope" overrideable="false" xpath="HttpSettings/OAuth2Settings/scope"/>
+				<field id="accessToken2" label="OAuth2 Access Token" overrideable="false" xpath="HttpSettings/OAuth2Settings/credentials/@accessToken"/>
+				<field id="accessKeyId" label="Amazon AWS Access Key" overrideable="false" xpath="HttpSettings/AwsSettings/credentials/accessKeyId"/>
+				<field id="awsSecret" label="Amazon AWS Secret Key" overrideable="false" xpath="HttpSettings/AwsSettings/credentials/awsSecret"/>
+				<field id="awsRegion" label="Amazon AWS Region" overrideable="false" xpath="HttpSettings/AwsSettings/credentials/awsRegion"/>
+				<field id="customRegion" label="Custom Region" overrideable="false" xpath="HttpSettings/AwsSettings/credentials/customRegion"/>
+			</ConnectionOverride>
+			<ConnectionOverride id="23cb7982-8b00-40c1-9b0e-78e15db940a8">
+				<field id="queueComponentId" label="Queue Component ID" overrideable="false" xpath="QueueSettings/queueComponentId/text()"/>
+			</ConnectionOverride>
+		</Connections>
+		<PartnerOverrides/>
+		<Properties/>
+		<Extensions>
+			<ObjectDefinitions>
+				<unusedProfiles/>
+			</ObjectDefinitions>
+			<DataMaps>
+				<unusedMaps/>
+			</DataMaps>
+		</Extensions>
+		<CrossReferenceOverrides>
+			<CrossReferenceOverride id="9f62b938-2661-4cb4-957b-65f5f217d054" name="HNK_GLO_CRT_Alert_Email" overrideable="true"/>
+			<CrossReferenceOverride id="6deaa988-fca5-4c61-9b03-6d1618e404e9" name="HNK_HSP_CRT_SalesOrderCreation" overrideable="true"/>
+		</CrossReferenceOverrides>
+		<PGPOverrides/>
+		<DefinedProcessPropertyOverrides>
+			<OverrideableDefinedProcessPropertyComponent componentId="2ee9f5dc-651f-4ed9-a001-5c3dbba7da5f">
+				<OverrideableDefinedProcessPropertyValue key="new-1374000048492" name="From Email Address" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="451d9886-f921-4a37-b8f2-024079fa3ec7" name="Environment" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="38ff8660-bea8-44da-84c0-c46e03de2e52" name="Execution URL" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="b2a8fa1d-2ad9-47fe-94da-93aa47b64f66" name="AlertOrMail" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="f4391f22-2808-4346-ad4d-4b39b35f50f0" name="SendOneEmailNotification" overrideable="true"/>
+			</OverrideableDefinedProcessPropertyComponent>
+			<OverrideableDefinedProcessPropertyComponent componentId="5ada411f-8a23-4c14-99ec-af14a740e59c">
+				<OverrideableDefinedProcessPropertyValue key="537d86c0-8f31-4f45-bd62-7626cc7f0855" name="AlertEmailAddress1" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="1ba928dc-e835-45b0-bc08-0f90c6de9fa0" name="AlertEmailAddress2" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="4fa036eb-224c-48a1-9352-4a6ad59dfe88" name="AlertEmailAddress3" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="20ddb7d0-f4ba-49db-a343-b12e1a0a47cf" name="AlertEmailAddress4" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="0e5d6877-6d87-4e0a-88d2-994e773f27a8" name="AlertEmailSubject" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="a479e4a6-6b79-4fad-9fce-5ffab32dbcd2" name="AlertEmailBody" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="41ecf5b7-3f62-4593-b54a-59b127a5831b" name="AlertEmailSignature" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="91829c0c-0040-408c-8077-42a1ef67048b" name="AlertLogFileEntry" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="c3f957db-f363-492c-90e6-252a87ec2964" name="AlertLogDatabaseEntry" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="ddeb467b-5d51-4547-a479-afcdf978a170" name="AlertDocumentReferenceName" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="bff3a671-f66e-42c6-8436-0e39813f428b" name="AlertDocumentReferenceValue" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="9fff87fd-80a2-4cd7-9ff7-94922a04d608" name="AlertProcessID" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="8174d114-46f1-4c11-a97b-1e6eb99ebf0c" name="AlertOpCO" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="5716ec28-c801-4ed8-8b6d-74eadb6cb861" name="AlertEmailAddress5" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="db1e65bc-2189-4b69-a40f-e7efc3e22d60" name="AlertEmailAddress6" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="168a0ff5-877f-4e11-84f0-928025edda99" name="AlertEmailAddress7" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="07de47d1-4217-4c62-b7a1-5224bfb9d90e" name="AlertEmailAddress8" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="3699cb62-a933-415e-ada2-383641f20d5d" name="AlertEmailAddress9" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="d5ac5827-7ea3-496c-a2d4-7421932b39a4" name="AlertEmailAddress10" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="7cccd4c6-a6c7-481f-bf83-a26b09a29c82" name="AlertEmailAddress11" overrideable="true"/>
+			</OverrideableDefinedProcessPropertyComponent>
+			<OverrideableDefinedProcessPropertyComponent componentId="fe4ba011-79c1-4ee5-9758-e601b26f988d">
+				<OverrideableDefinedProcessPropertyValue key="aa0b54be-b2e2-4974-aea5-0ac335a9184f" name="client_id" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="07aa3696-1fca-4cd8-a63b-4d944e98705b" name="client_secret" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="a799016a-9fc8-4819-b736-e412ea04a643" name="username" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="00dc2235-a43a-4361-8382-1f9eb62244a5" name="password" overrideable="true"/>
+				<OverrideableDefinedProcessPropertyValue key="d9881e57-ffaf-4788-8eac-321081ab88d5" name="grant_type" overrideable="true"/>
+			</OverrideableDefinedProcessPropertyComponent>
+		</DefinedProcessPropertyOverrides>
+	</Overrides>
+</Component>
