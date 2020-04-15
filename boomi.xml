@@ -2,7 +2,7 @@
 <Component xmlns:ns2="http://www.boomi.com/connector/annotation" xmlns:ns3="http://exacttarget.com/wsdl/partnerAPI" xmlns:ns4="urn:fault.partner.exacttarget.com" xmlns:ns5="http://schemas.boomi.com/sap/edi_dc40" xmlns:ns6="http://schemas.microsoft.com/2003/10/Serialization/" deleted="false">
 	<Id>f6a28619-62f7-405c-8631-e73e1049fc38</Id>
 	<Type>process</Type>
-	<Name>HNK_HSP_PR_15300_SAP_SF_SalesOrder_CreationModification</Name>
+	<Name>New Component Find error</Name>
 	<Version>69</Version>
 	<FolderId name="Heineken Global/#Region EMEA/BP_ORDER_TO_CASH/Spain_Salesforce">3045828</FolderId>
 	<AccountId>heinekeninternational-JQ51NZ</AccountId>
